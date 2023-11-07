@@ -49,11 +49,10 @@ Email Marketing: Sử dụng email để gửi thông báo về các chương tr
 
 ## Hình Ảnh Trang web
 
-Thêm hình ảnh hoặc gif minh họa về sản phẩm hoặc trang web của bạn.
-
-![Hình ảnh trang chủ web](![image](https://github.com/liemcoder123/webbandocongnghe/assets/115134098/7d28d0a3-131b-42be-bc33-70809b355e57)
-) lll
-![Hình ảnh minh họa 2](link-to-image2.png)
+Hình ảnh trang chủ của web
+![Hình ảnh minh họa 2](https://scontent.fsgn5-15.fna.fbcdn.net/v/t1.15752-9/399834985_299355726261641_5876767180751822932_n.png?_nc_cat=111&ccb=1-7&_nc_sid=8cd0a2&_nc_ohc=HjcZrUIVV8QAX_URdUM&_nc_ht=scontent.fsgn5-15.fna&oh=03_AdT1GAwzdgAxZ4YcQ1G7wX7B5t16Iretr5mba80Ymsi8EQ&oe=6571F0B1)
+Hình ảnh trang chi tiết sản phẩm
+![Hình ảnh minh họa 2](https://scontent.fsgn5-10.fna.fbcdn.net/v/t1.15752-9/370198864_699999891793140_3421241280694832308_n.png?_nc_cat=107&ccb=1-7&_nc_sid=8cd0a2&_nc_ohc=9X1kCFJxs_kAX92FP6W&_nc_ht=scontent.fsgn5-10.fna&oh=03_AdRLQIUgbNe5ic_YI2WPFQ_nbcsjj7F6tTiLqOE7zG8wvQ&oe=6571E3F9)
 
 ## Công Nghệ Sử Dụng
 
