@@ -1,0 +1,93 @@
+﻿@model WebBanDoCongNghe.Models.tb_Order
+@{
+    ViewBag.Title = "EditOrderCustomer";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+@section naviheader{
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/Admin/Home/Index" class="nav-link">Trang chủ</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/Admin/Product/IndexProduct" class="nav-link">Danh sách đặt hàng</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">Cập nhật</a>
+        </li>
+    </ul>
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Cập nhật đơn hàng</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="/Admin/Product/IndexProduct">Danh sách đặt hàng</a></li>
+                    <li class="breadcrumb-item active">Cập nhật</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- Default box -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-default">
+                <div class="card-header">
+                    <h3 class="card-title">Thông tin đơn hàng</h3>
+                </div>
+                <div class="card-body">
+                    <div class="bs-stepper linear">
+                        <div class="bs-stepper-content">
+                            @using (Html.BeginForm("EditOrderCustomer", "OrderCustomer", FormMethod.Post, new { }))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true)
+                                @Html.HiddenFor(x => x.MaDonHang)
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="TenBrand">Thanh toán</label>
+                                            @Html.DropDownListFor(model => model.IsThanhToan, new[] { new SelectListItem { Value = "true", Text = "Đã thanh toán" }, new SelectListItem { Value = "false", Text = "Chưa thanh toán" } }, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="TenBrand">Hoàn thành</label>
+                                            @Html.DropDownListFor(model => model.IsHoanThanh, new[] { new SelectListItem { Value = "true", Text = "Đã hoàn thành", }, new SelectListItem { Value = "false", Text = "Chưa hoàn thành" } }, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="TenBrand">Hoàn thành</label>
+                                            @Html.DropDownListFor(model => model.IsHuyDon, new[] { new SelectListItem { Value = "true", Text = "Hủy đơn hàng", }, new SelectListItem { Value = "false", Text = "Không hủy đơn" } }, new { @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group text-right">
+                                    <a href="/Admin/OrderCustomer/IndexOrderCustomer" class="btn btn-danger">Quay lại</a>
+                                    <button type="submit" class="btn btn-primary" onclick="if (confirm('Bạn có chắc với cập nhật của mình không?') == true) { location.href = '/Admin/OrderCustomer/EditOrderCustomer?id=@Model.MaDonHang' }">Cập nhật</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+        </div>
+    </div>
+</section>
+
+

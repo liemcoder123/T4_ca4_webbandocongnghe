@@ -1,0 +1,40 @@
+﻿@model IEnumerable<WebBanDoCongNghe.Models.tb_Product>
+
+
+@if (Model != null && Model.Any())
+{
+
+    foreach (var item in Model)
+    {
+        var strImage = "";
+        var image = item.tb_ProductImages.FirstOrDefault(n => n.IsDefault == true);
+        if (image != null)
+        {
+            strImage = image.Image;
+        }
+        <div class="owl-item product_slider_item">
+            <div class="product-item">
+                <div class="product discount">
+                    <div class="product_image" style="min-height:240px;">
+                        <a href="/chi-tiet/@item.Link-p@(item.MaSanPham)"><img style="width:100%;" src="@strImage" alt="@item.TenSanPham"></a>
+                    </div>
+                    @if (item.IsSale == true)
+                    {
+                        <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>Sale</span></div>
+                    }       
+                    <div class="product_info">
+                        <h6 class="product_name"><a href="/chi-tiet/@item.Link-p@(item.MaSanPham)">@item.TenSanPham</a></h6>
+                        @if (item.IsSale == true)
+                        {
+                            <div class="product_price">@item.PriceSale<span>@item.Price</span></div>
+                        }
+                        @if (item.IsSale == false || item.IsSale == null)
+                        {
+                            <div class="product_price">@item.Price</div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}

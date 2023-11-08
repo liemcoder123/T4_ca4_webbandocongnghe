@@ -1,0 +1,29 @@
+﻿@model IEnumerable<WebBanDoCongNghe.Models.ShoppingCartItem>
+
+@if (Model != null && Model.Any())
+{
+    <h4>Giỏ hàng</h4>
+    decimal TongTien = 0;
+    <div style="border:1px solid #808080">
+        <table class="table">
+            @foreach (var item in Model)
+            {
+                TongTien = TongTien + item.iTongGia;
+                <tr>
+                    <td>
+                        <a href="#">@item.iTenSanPham</a>
+                    </td>
+                    <td class="text-center">x @item.iSoLuong</td>
+                    <td class="text-center">  @String.Format("{0:0,0}", item.iTongGia) VND</td>
+                </tr>
+            }
+            <tr>
+                <td colspan="2">Tổng tiền:</td>
+                <td class="text-center">@String.Format("{0:0,0}", TongTien) VND</td>
+            </tr>
+        </table>
+    </div>
+
+
+
+}

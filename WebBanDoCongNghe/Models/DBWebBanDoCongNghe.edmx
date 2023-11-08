@@ -1,0 +1,1408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBQuanLyBanDoCongNgheModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tb_Brand">
+          <Key>
+            <PropertyRef Name="MaBrand" />
+          </Key>
+          <Property Name="MaBrand" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenBrand" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Icon" Type="nvarchar(max)" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tb_Category">
+          <Key>
+            <PropertyRef Name="MaDanhMuc" />
+          </Key>
+          <Property Name="MaDanhMuc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenDanhMuc" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Position" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Link" Type="varchar(max)" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tb_ChiTietOrder">
+          <Key>
+            <PropertyRef Name="MaDonHang" />
+            <PropertyRef Name="MaSanPham" />
+          </Key>
+          <Property Name="MaDonHang" Type="int" Nullable="false" />
+          <Property Name="MaSanPham" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_ChiTietOrder-Traveler">
+          <Key>
+            <PropertyRef Name="MaDonHang" />
+            <PropertyRef Name="MaSanPham" />
+          </Key>
+          <Property Name="MaDonHang" Type="int" Nullable="false" />
+          <Property Name="MaSanPham" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tb_Color">
+          <Key>
+            <PropertyRef Name="MaColor" />
+          </Key>
+          <Property Name="MaColor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenColor" Type="nvarchar" MaxLength="150" />
+          <Property Name="ImageColor" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tb_Customer">
+          <Key>
+            <PropertyRef Name="MaKH" />
+          </Key>
+          <Property Name="MaKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="200" />
+          <Property Name="TaiKhoan" Type="varchar" MaxLength="100" />
+          <Property Name="MatKhau" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="ImageUser" Type="nchar" MaxLength="10" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="5" />
+          <Property Name="NgaySinh" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsAdmin" Type="bit" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tb_DiscountCode">
+          <Key>
+            <PropertyRef Name="MaDiscount" />
+          </Key>
+          <Property Name="MaDiscount" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenDiscount" Type="nvarchar" MaxLength="150" />
+          <Property Name="DiscountCode" Type="varchar" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Value" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tb_Memory">
+          <Key>
+            <PropertyRef Name="MaMemory" />
+          </Key>
+          <Property Name="MaMemory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenMemory" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tb_Order">
+          <Key>
+            <PropertyRef Name="MaDonHang" />
+          </Key>
+          <Property Name="MaDonHang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaKH" Type="int" />
+          <Property Name="MaPhuongThucThanhToan" Type="int" />
+          <Property Name="GhiChu" Type="nvarchar(max)" />
+          <Property Name="IsThanhToan" Type="bit" />
+          <Property Name="IsHoanThanh" Type="bit" />
+          <Property Name="IsHuyDon" Type="bit" />
+          <Property Name="TotalPayment" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MaDiscount" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tb_PhuongThucThanhToan">
+          <Key>
+            <PropertyRef Name="MaPhuongThucThanhToan" />
+          </Key>
+          <Property Name="MaPhuongThucThanhToan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenPhuongThucThanhToan" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tb_Product">
+          <Key>
+            <PropertyRef Name="MaSanPham" />
+          </Key>
+          <Property Name="MaSanPham" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenSanPham" Type="nvarchar" MaxLength="250" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Detail" Type="nvarchar(max)" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PriceSale" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="ImageProduct" Type="nvarchar(max)" />
+          <Property Name="Link" Type="varchar(max)" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsSoldOut" Type="bit" />
+          <Property Name="IsSale" Type="bit" />
+          <Property Name="IsNew" Type="bit" />
+          <Property Name="IsHot" Type="bit" />
+          <Property Name="SeoTitle" Type="nvarchar(max)" />
+          <Property Name="SeoDescription" Type="nvarchar(max)" />
+          <Property Name="SeoKeywords" Type="nvarchar(max)" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar(max)" />
+          <Property Name="MaProductCategory" Type="int" />
+          <Property Name="MaBrand" Type="int" />
+          <Property Name="MaColor" Type="int" />
+          <Property Name="MaMemory" Type="int" />
+        </EntityType>
+        <EntityType Name="tb_ProductCategory">
+          <Key>
+            <PropertyRef Name="MaProductCategory" />
+          </Key>
+          <Property Name="MaProductCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenDanhMuc" Type="nvarchar" MaxLength="150" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Position" Type="int" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Icon" Type="nvarchar(max)" />
+          <Property Name="Link" Type="varchar(max)" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tb_ProductImages">
+          <Key>
+            <PropertyRef Name="MaImages" />
+          </Key>
+          <Property Name="MaImages" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsDefault" Type="bit" />
+          <Property Name="MaSanPham" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tb_Slide">
+          <Key>
+            <PropertyRef Name="MaImages" />
+          </Key>
+          <Property Name="MaImages" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="Position" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tb_TaiKhoanNganHang">
+          <Key>
+            <PropertyRef Name="MaSoTaiKhoan" />
+          </Key>
+          <Property Name="MaSoTaiKhoan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenNganHang" Type="nvarchar" MaxLength="200" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="SoTaiKhoan" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="tb_TichDiem">
+          <Key>
+            <PropertyRef Name="MaKH" />
+          </Key>
+          <Property Name="MaKH" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="200" />
+          <Property Name="SoDiemCongGanNhat" Type="int" />
+          <Property Name="TongSoDiem" Type="int" />
+          <Property Name="MaDonHang" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tb_Traveler">
+          <Key>
+            <PropertyRef Name="MaDonHang" />
+          </Key>
+          <Property Name="MaDonHang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="PhoneNumber1" Type="varchar" MaxLength="20" />
+          <Property Name="PhoneNumber2" Type="varchar" MaxLength="20" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="Ghichu" Type="nvarchar" MaxLength="500" />
+          <Property Name="TotalPayment" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="MaPhuongThucThanhToan" Type="int" />
+          <Property Name="IsThanhToan" Type="bit" />
+          <Property Name="IsHoanThanh" Type="bit" />
+          <Property Name="IsHuyDon" Type="bit" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="nvarchar(max)" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_tb_ChiTietOrder_tb_Order">
+          <End Role="tb_Order" Type="Self.tb_Order" Multiplicity="1" />
+          <End Role="tb_ChiTietOrder" Type="Self.tb_ChiTietOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Order">
+              <PropertyRef Name="MaDonHang" />
+            </Principal>
+            <Dependent Role="tb_ChiTietOrder">
+              <PropertyRef Name="MaDonHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_ChiTietOrder_tb_Product">
+          <End Role="tb_Product" Type="Self.tb_Product" Multiplicity="1" />
+          <End Role="tb_ChiTietOrder" Type="Self.tb_ChiTietOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Product">
+              <PropertyRef Name="MaSanPham" />
+            </Principal>
+            <Dependent Role="tb_ChiTietOrder">
+              <PropertyRef Name="MaSanPham" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_ChiTietOrder-Traveler_tb_Product">
+          <End Role="tb_Product" Type="Self.tb_Product" Multiplicity="1" />
+          <End Role="tb_ChiTietOrder-Traveler" Type="Self.tb_ChiTietOrder-Traveler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Product">
+              <PropertyRef Name="MaSanPham" />
+            </Principal>
+            <Dependent Role="tb_ChiTietOrder-Traveler">
+              <PropertyRef Name="MaSanPham" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_ChiTietOrder-Traveler_tb_Traveler">
+          <End Role="tb_Traveler" Type="Self.tb_Traveler" Multiplicity="1" />
+          <End Role="tb_ChiTietOrder-Traveler" Type="Self.tb_ChiTietOrder-Traveler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Traveler">
+              <PropertyRef Name="MaDonHang" />
+            </Principal>
+            <Dependent Role="tb_ChiTietOrder-Traveler">
+              <PropertyRef Name="MaDonHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_Order_tb_Customer">
+          <End Role="tb_Customer" Type="Self.tb_Customer" Multiplicity="0..1" />
+          <End Role="tb_Order" Type="Self.tb_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Customer">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="tb_Order">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_Order_tb_DiscountCode">
+          <End Role="tb_DiscountCode" Type="Self.tb_DiscountCode" Multiplicity="0..1" />
+          <End Role="tb_Order" Type="Self.tb_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_DiscountCode">
+              <PropertyRef Name="MaDiscount" />
+            </Principal>
+            <Dependent Role="tb_Order">
+              <PropertyRef Name="MaDiscount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_Order_tb_PhuongThucThanhToan">
+          <End Role="tb_PhuongThucThanhToan" Type="Self.tb_PhuongThucThanhToan" Multiplicity="0..1" />
+          <End Role="tb_Order" Type="Self.tb_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_PhuongThucThanhToan">
+              <PropertyRef Name="MaPhuongThucThanhToan" />
+            </Principal>
+            <Dependent Role="tb_Order">
+              <PropertyRef Name="MaPhuongThucThanhToan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_Product_tb_Brand">
+          <End Role="tb_Brand" Type="Self.tb_Brand" Multiplicity="0..1" />
+          <End Role="tb_Product" Type="Self.tb_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Brand">
+              <PropertyRef Name="MaBrand" />
+            </Principal>
+            <Dependent Role="tb_Product">
+              <PropertyRef Name="MaBrand" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_Product_tb_Color1">
+          <End Role="tb_Color" Type="Self.tb_Color" Multiplicity="0..1" />
+          <End Role="tb_Product" Type="Self.tb_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Color">
+              <PropertyRef Name="MaColor" />
+            </Principal>
+            <Dependent Role="tb_Product">
+              <PropertyRef Name="MaColor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_Product_tb_Memory">
+          <End Role="tb_Memory" Type="Self.tb_Memory" Multiplicity="0..1" />
+          <End Role="tb_Product" Type="Self.tb_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Memory">
+              <PropertyRef Name="MaMemory" />
+            </Principal>
+            <Dependent Role="tb_Product">
+              <PropertyRef Name="MaMemory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_Product_tb_ProductCategory">
+          <End Role="tb_ProductCategory" Type="Self.tb_ProductCategory" Multiplicity="0..1" />
+          <End Role="tb_Product" Type="Self.tb_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_ProductCategory">
+              <PropertyRef Name="MaProductCategory" />
+            </Principal>
+            <Dependent Role="tb_Product">
+              <PropertyRef Name="MaProductCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_ProductImages_tb_Product">
+          <End Role="tb_Product" Type="Self.tb_Product" Multiplicity="0..1" />
+          <End Role="tb_ProductImages" Type="Self.tb_ProductImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Product">
+              <PropertyRef Name="MaSanPham" />
+            </Principal>
+            <Dependent Role="tb_ProductImages">
+              <PropertyRef Name="MaSanPham" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_TichDiem_tb_Customer">
+          <End Role="tb_Customer" Type="Self.tb_Customer" Multiplicity="1" />
+          <End Role="tb_TichDiem" Type="Self.tb_TichDiem" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Customer">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="tb_TichDiem">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_TichDiem_tb_Order">
+          <End Role="tb_Order" Type="Self.tb_Order" Multiplicity="1" />
+          <End Role="tb_TichDiem" Type="Self.tb_TichDiem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Order">
+              <PropertyRef Name="MaDonHang" />
+            </Principal>
+            <Dependent Role="tb_TichDiem">
+              <PropertyRef Name="MaDonHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_Traveler_tb_PhuongThucThanhToan">
+          <End Role="tb_PhuongThucThanhToan" Type="Self.tb_PhuongThucThanhToan" Multiplicity="0..1" />
+          <End Role="tb_Traveler" Type="Self.tb_Traveler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_PhuongThucThanhToan">
+              <PropertyRef Name="MaPhuongThucThanhToan" />
+            </Principal>
+            <Dependent Role="tb_Traveler">
+              <PropertyRef Name="MaPhuongThucThanhToan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBQuanLyBanDoCongNgheModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Brand" EntityType="Self.tb_Brand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Category" EntityType="Self.tb_Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_ChiTietOrder" EntityType="Self.tb_ChiTietOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_ChiTietOrder-Traveler" EntityType="Self.tb_ChiTietOrder-Traveler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Color" EntityType="Self.tb_Color" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Customer" EntityType="Self.tb_Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_DiscountCode" EntityType="Self.tb_DiscountCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Memory" EntityType="Self.tb_Memory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Order" EntityType="Self.tb_Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_PhuongThucThanhToan" EntityType="Self.tb_PhuongThucThanhToan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Product" EntityType="Self.tb_Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_ProductCategory" EntityType="Self.tb_ProductCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_ProductImages" EntityType="Self.tb_ProductImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Slide" EntityType="Self.tb_Slide" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_TaiKhoanNganHang" EntityType="Self.tb_TaiKhoanNganHang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_TichDiem" EntityType="Self.tb_TichDiem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tb_Traveler" EntityType="Self.tb_Traveler" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tb_ChiTietOrder_tb_Order" Association="Self.FK_tb_ChiTietOrder_tb_Order">
+            <End Role="tb_Order" EntitySet="tb_Order" />
+            <End Role="tb_ChiTietOrder" EntitySet="tb_ChiTietOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_ChiTietOrder_tb_Product" Association="Self.FK_tb_ChiTietOrder_tb_Product">
+            <End Role="tb_Product" EntitySet="tb_Product" />
+            <End Role="tb_ChiTietOrder" EntitySet="tb_ChiTietOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_ChiTietOrder-Traveler_tb_Product" Association="Self.FK_tb_ChiTietOrder-Traveler_tb_Product">
+            <End Role="tb_Product" EntitySet="tb_Product" />
+            <End Role="tb_ChiTietOrder-Traveler" EntitySet="tb_ChiTietOrder-Traveler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_ChiTietOrder-Traveler_tb_Traveler" Association="Self.FK_tb_ChiTietOrder-Traveler_tb_Traveler">
+            <End Role="tb_Traveler" EntitySet="tb_Traveler" />
+            <End Role="tb_ChiTietOrder-Traveler" EntitySet="tb_ChiTietOrder-Traveler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_Order_tb_Customer" Association="Self.FK_tb_Order_tb_Customer">
+            <End Role="tb_Customer" EntitySet="tb_Customer" />
+            <End Role="tb_Order" EntitySet="tb_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_Order_tb_DiscountCode" Association="Self.FK_tb_Order_tb_DiscountCode">
+            <End Role="tb_DiscountCode" EntitySet="tb_DiscountCode" />
+            <End Role="tb_Order" EntitySet="tb_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_Order_tb_PhuongThucThanhToan" Association="Self.FK_tb_Order_tb_PhuongThucThanhToan">
+            <End Role="tb_PhuongThucThanhToan" EntitySet="tb_PhuongThucThanhToan" />
+            <End Role="tb_Order" EntitySet="tb_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_Product_tb_Brand" Association="Self.FK_tb_Product_tb_Brand">
+            <End Role="tb_Brand" EntitySet="tb_Brand" />
+            <End Role="tb_Product" EntitySet="tb_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_Product_tb_Color1" Association="Self.FK_tb_Product_tb_Color1">
+            <End Role="tb_Color" EntitySet="tb_Color" />
+            <End Role="tb_Product" EntitySet="tb_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_Product_tb_Memory" Association="Self.FK_tb_Product_tb_Memory">
+            <End Role="tb_Memory" EntitySet="tb_Memory" />
+            <End Role="tb_Product" EntitySet="tb_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_Product_tb_ProductCategory" Association="Self.FK_tb_Product_tb_ProductCategory">
+            <End Role="tb_ProductCategory" EntitySet="tb_ProductCategory" />
+            <End Role="tb_Product" EntitySet="tb_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_ProductImages_tb_Product" Association="Self.FK_tb_ProductImages_tb_Product">
+            <End Role="tb_Product" EntitySet="tb_Product" />
+            <End Role="tb_ProductImages" EntitySet="tb_ProductImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_TichDiem_tb_Customer" Association="Self.FK_tb_TichDiem_tb_Customer">
+            <End Role="tb_Customer" EntitySet="tb_Customer" />
+            <End Role="tb_TichDiem" EntitySet="tb_TichDiem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_TichDiem_tb_Order" Association="Self.FK_tb_TichDiem_tb_Order">
+            <End Role="tb_Order" EntitySet="tb_Order" />
+            <End Role="tb_TichDiem" EntitySet="tb_TichDiem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_Traveler_tb_PhuongThucThanhToan" Association="Self.FK_tb_Traveler_tb_PhuongThucThanhToan">
+            <End Role="tb_PhuongThucThanhToan" EntitySet="tb_PhuongThucThanhToan" />
+            <End Role="tb_Traveler" EntitySet="tb_Traveler" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBQuanLyBanDoCongNgheModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tb_Brand">
+          <Key>
+            <PropertyRef Name="MaBrand" />
+          </Key>
+          <Property Name="MaBrand" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenBrand" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Icon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_Product" Relationship="Self.FK_tb_Product_tb_Brand" FromRole="tb_Brand" ToRole="tb_Product" />
+        </EntityType>
+        <EntityType Name="tb_Category">
+          <Key>
+            <PropertyRef Name="MaDanhMuc" />
+          </Key>
+          <Property Name="MaDanhMuc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenDanhMuc" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_ChiTietOrder">
+          <Key>
+            <PropertyRef Name="MaDonHang" />
+            <PropertyRef Name="MaSanPham" />
+          </Key>
+          <Property Name="MaDonHang" Type="Int32" Nullable="false" />
+          <Property Name="MaSanPham" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Quantity" Type="Int32" />
+          <NavigationProperty Name="tb_Order" Relationship="Self.FK_tb_ChiTietOrder_tb_Order" FromRole="tb_ChiTietOrder" ToRole="tb_Order" />
+          <NavigationProperty Name="tb_Product" Relationship="Self.FK_tb_ChiTietOrder_tb_Product" FromRole="tb_ChiTietOrder" ToRole="tb_Product" />
+        </EntityType>
+        <EntityType Name="tb_ChiTietOrder_Traveler">
+          <Key>
+            <PropertyRef Name="MaDonHang" />
+            <PropertyRef Name="MaSanPham" />
+          </Key>
+          <Property Name="MaDonHang" Type="Int32" Nullable="false" />
+          <Property Name="MaSanPham" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tb_Product" Relationship="Self.FK_tb_ChiTietOrder_Traveler_tb_Product" FromRole="tb_ChiTietOrder_Traveler" ToRole="tb_Product" />
+          <NavigationProperty Name="tb_Traveler" Relationship="Self.FK_tb_ChiTietOrder_Traveler_tb_Traveler" FromRole="tb_ChiTietOrder_Traveler" ToRole="tb_Traveler" />
+        </EntityType>
+        <EntityType Name="tb_Color">
+          <Key>
+            <PropertyRef Name="MaColor" />
+          </Key>
+          <Property Name="MaColor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenColor" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ImageColor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_Product" Relationship="Self.FK_tb_Product_tb_Color1" FromRole="tb_Color" ToRole="tb_Product" />
+        </EntityType>
+        <EntityType Name="tb_Customer">
+          <Key>
+            <PropertyRef Name="MaKH" />
+          </Key>
+          <Property Name="MaKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HoTen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TaiKhoan" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MatKhau" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ImageUser" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="GioiTinh" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsAdmin" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_Order" Relationship="Self.FK_tb_Order_tb_Customer" FromRole="tb_Customer" ToRole="tb_Order" />
+          <NavigationProperty Name="tb_TichDiem" Relationship="Self.FK_tb_TichDiem_tb_Customer" FromRole="tb_Customer" ToRole="tb_TichDiem" />
+        </EntityType>
+        <EntityType Name="tb_DiscountCode">
+          <Key>
+            <PropertyRef Name="MaDiscount" />
+          </Key>
+          <Property Name="MaDiscount" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenDiscount" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="DiscountCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Value" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_Order" Relationship="Self.FK_tb_Order_tb_DiscountCode" FromRole="tb_DiscountCode" ToRole="tb_Order" />
+        </EntityType>
+        <EntityType Name="tb_Memory">
+          <Key>
+            <PropertyRef Name="MaMemory" />
+          </Key>
+          <Property Name="MaMemory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenMemory" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_Product" Relationship="Self.FK_tb_Product_tb_Memory" FromRole="tb_Memory" ToRole="tb_Product" />
+        </EntityType>
+        <EntityType Name="tb_Order">
+          <Key>
+            <PropertyRef Name="MaDonHang" />
+          </Key>
+          <Property Name="MaDonHang" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaKH" Type="Int32" />
+          <Property Name="MaPhuongThucThanhToan" Type="Int32" />
+          <Property Name="GhiChu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsThanhToan" Type="Boolean" />
+          <Property Name="IsHoanThanh" Type="Boolean" />
+          <Property Name="IsHuyDon" Type="Boolean" />
+          <Property Name="TotalPayment" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MaDiscount" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_ChiTietOrder" Relationship="Self.FK_tb_ChiTietOrder_tb_Order" FromRole="tb_Order" ToRole="tb_ChiTietOrder" />
+          <NavigationProperty Name="tb_Customer" Relationship="Self.FK_tb_Order_tb_Customer" FromRole="tb_Order" ToRole="tb_Customer" />
+          <NavigationProperty Name="tb_DiscountCode" Relationship="Self.FK_tb_Order_tb_DiscountCode" FromRole="tb_Order" ToRole="tb_DiscountCode" />
+          <NavigationProperty Name="tb_PhuongThucThanhToan" Relationship="Self.FK_tb_Order_tb_PhuongThucThanhToan" FromRole="tb_Order" ToRole="tb_PhuongThucThanhToan" />
+          <NavigationProperty Name="tb_TichDiem" Relationship="Self.FK_tb_TichDiem_tb_Order" FromRole="tb_Order" ToRole="tb_TichDiem" />
+        </EntityType>
+        <EntityType Name="tb_PhuongThucThanhToan">
+          <Key>
+            <PropertyRef Name="MaPhuongThucThanhToan" />
+          </Key>
+          <Property Name="MaPhuongThucThanhToan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenPhuongThucThanhToan" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_Order" Relationship="Self.FK_tb_Order_tb_PhuongThucThanhToan" FromRole="tb_PhuongThucThanhToan" ToRole="tb_Order" />
+          <NavigationProperty Name="tb_Traveler" Relationship="Self.FK_tb_Traveler_tb_PhuongThucThanhToan" FromRole="tb_PhuongThucThanhToan" ToRole="tb_Traveler" />
+        </EntityType>
+        <EntityType Name="tb_Product">
+          <Key>
+            <PropertyRef Name="MaSanPham" />
+          </Key>
+          <Property Name="MaSanPham" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenSanPham" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PriceSale" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="ImageProduct" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsSoldOut" Type="Boolean" />
+          <Property Name="IsSale" Type="Boolean" />
+          <Property Name="IsNew" Type="Boolean" />
+          <Property Name="IsHot" Type="Boolean" />
+          <Property Name="SeoTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SeoDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SeoKeywords" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MaProductCategory" Type="Int32" />
+          <Property Name="MaBrand" Type="Int32" />
+          <Property Name="MaColor" Type="Int32" />
+          <Property Name="MaMemory" Type="Int32" />
+          <NavigationProperty Name="tb_Brand" Relationship="Self.FK_tb_Product_tb_Brand" FromRole="tb_Product" ToRole="tb_Brand" />
+          <NavigationProperty Name="tb_ChiTietOrder" Relationship="Self.FK_tb_ChiTietOrder_tb_Product" FromRole="tb_Product" ToRole="tb_ChiTietOrder" />
+          <NavigationProperty Name="tb_ChiTietOrder_Traveler" Relationship="Self.FK_tb_ChiTietOrder_Traveler_tb_Product" FromRole="tb_Product" ToRole="tb_ChiTietOrder_Traveler" />
+          <NavigationProperty Name="tb_Color" Relationship="Self.FK_tb_Product_tb_Color1" FromRole="tb_Product" ToRole="tb_Color" />
+          <NavigationProperty Name="tb_Memory" Relationship="Self.FK_tb_Product_tb_Memory" FromRole="tb_Product" ToRole="tb_Memory" />
+          <NavigationProperty Name="tb_ProductCategory" Relationship="Self.FK_tb_Product_tb_ProductCategory" FromRole="tb_Product" ToRole="tb_ProductCategory" />
+          <NavigationProperty Name="tb_ProductImages" Relationship="Self.FK_tb_ProductImages_tb_Product" FromRole="tb_Product" ToRole="tb_ProductImages" />
+        </EntityType>
+        <EntityType Name="tb_ProductCategory">
+          <Key>
+            <PropertyRef Name="MaProductCategory" />
+          </Key>
+          <Property Name="MaProductCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenDanhMuc" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Icon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_Product" Relationship="Self.FK_tb_Product_tb_ProductCategory" FromRole="tb_ProductCategory" ToRole="tb_Product" />
+        </EntityType>
+        <EntityType Name="tb_ProductImages">
+          <Key>
+            <PropertyRef Name="MaImages" />
+          </Key>
+          <Property Name="MaImages" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsDefault" Type="Boolean" />
+          <Property Name="MaSanPham" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_Product" Relationship="Self.FK_tb_ProductImages_tb_Product" FromRole="tb_ProductImages" ToRole="tb_Product" />
+        </EntityType>
+        <EntityType Name="tb_Slide">
+          <Key>
+            <PropertyRef Name="MaImages" />
+          </Key>
+          <Property Name="MaImages" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Position" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_TaiKhoanNganHang">
+          <Key>
+            <PropertyRef Name="MaSoTaiKhoan" />
+          </Key>
+          <Property Name="MaSoTaiKhoan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenNganHang" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SoTaiKhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tb_TichDiem">
+          <Key>
+            <PropertyRef Name="MaKH" />
+          </Key>
+          <Property Name="MaKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HoTen" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SoDiemCongGanNhat" Type="Int32" />
+          <Property Name="TongSoDiem" Type="Int32" />
+          <Property Name="MaDonHang" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tb_Customer" Relationship="Self.FK_tb_TichDiem_tb_Customer" FromRole="tb_TichDiem" ToRole="tb_Customer" />
+          <NavigationProperty Name="tb_Order" Relationship="Self.FK_tb_TichDiem_tb_Order" FromRole="tb_TichDiem" ToRole="tb_Order" />
+        </EntityType>
+        <EntityType Name="tb_Traveler">
+          <Key>
+            <PropertyRef Name="MaDonHang" />
+          </Key>
+          <Property Name="MaDonHang" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber2" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Ghichu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MaPhuongThucThanhToan" Type="Int32" />
+          <Property Name="IsThanhToan" Type="Boolean" />
+          <Property Name="IsHoanThanh" Type="Boolean" />
+          <Property Name="IsHuyDon" Type="Boolean" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tb_ChiTietOrder_Traveler" Relationship="Self.FK_tb_ChiTietOrder_Traveler_tb_Traveler" FromRole="tb_Traveler" ToRole="tb_ChiTietOrder_Traveler" />
+          <NavigationProperty Name="tb_PhuongThucThanhToan" Relationship="Self.FK_tb_Traveler_tb_PhuongThucThanhToan" FromRole="tb_Traveler" ToRole="tb_PhuongThucThanhToan" />
+          <Property Name="TotalPayment" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <Association Name="FK_tb_Product_tb_Brand">
+          <End Role="tb_Brand" Type="Self.tb_Brand" Multiplicity="0..1" />
+          <End Role="tb_Product" Type="Self.tb_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Brand">
+              <PropertyRef Name="MaBrand" />
+            </Principal>
+            <Dependent Role="tb_Product">
+              <PropertyRef Name="MaBrand" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_ChiTietOrder_tb_Order">
+          <End Role="tb_Order" Type="Self.tb_Order" Multiplicity="1" />
+          <End Role="tb_ChiTietOrder" Type="Self.tb_ChiTietOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Order">
+              <PropertyRef Name="MaDonHang" />
+            </Principal>
+            <Dependent Role="tb_ChiTietOrder">
+              <PropertyRef Name="MaDonHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_ChiTietOrder_tb_Product">
+          <End Role="tb_Product" Type="Self.tb_Product" Multiplicity="1" />
+          <End Role="tb_ChiTietOrder" Type="Self.tb_ChiTietOrder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Product">
+              <PropertyRef Name="MaSanPham" />
+            </Principal>
+            <Dependent Role="tb_ChiTietOrder">
+              <PropertyRef Name="MaSanPham" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_ChiTietOrder_Traveler_tb_Product">
+          <End Role="tb_Product" Type="Self.tb_Product" Multiplicity="1" />
+          <End Role="tb_ChiTietOrder_Traveler" Type="Self.tb_ChiTietOrder_Traveler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Product">
+              <PropertyRef Name="MaSanPham" />
+            </Principal>
+            <Dependent Role="tb_ChiTietOrder_Traveler">
+              <PropertyRef Name="MaSanPham" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_ChiTietOrder_Traveler_tb_Traveler">
+          <End Role="tb_Traveler" Type="Self.tb_Traveler" Multiplicity="1" />
+          <End Role="tb_ChiTietOrder_Traveler" Type="Self.tb_ChiTietOrder_Traveler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Traveler">
+              <PropertyRef Name="MaDonHang" />
+            </Principal>
+            <Dependent Role="tb_ChiTietOrder_Traveler">
+              <PropertyRef Name="MaDonHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_Product_tb_Color1">
+          <End Role="tb_Color" Type="Self.tb_Color" Multiplicity="0..1" />
+          <End Role="tb_Product" Type="Self.tb_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Color">
+              <PropertyRef Name="MaColor" />
+            </Principal>
+            <Dependent Role="tb_Product">
+              <PropertyRef Name="MaColor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_Order_tb_Customer">
+          <End Role="tb_Customer" Type="Self.tb_Customer" Multiplicity="0..1" />
+          <End Role="tb_Order" Type="Self.tb_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Customer">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="tb_Order">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_TichDiem_tb_Customer">
+          <End Role="tb_Customer" Type="Self.tb_Customer" Multiplicity="1" />
+          <End Role="tb_TichDiem" Type="Self.tb_TichDiem" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Customer">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="tb_TichDiem">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_Order_tb_DiscountCode">
+          <End Role="tb_DiscountCode" Type="Self.tb_DiscountCode" Multiplicity="0..1" />
+          <End Role="tb_Order" Type="Self.tb_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_DiscountCode">
+              <PropertyRef Name="MaDiscount" />
+            </Principal>
+            <Dependent Role="tb_Order">
+              <PropertyRef Name="MaDiscount" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_Product_tb_Memory">
+          <End Role="tb_Memory" Type="Self.tb_Memory" Multiplicity="0..1" />
+          <End Role="tb_Product" Type="Self.tb_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Memory">
+              <PropertyRef Name="MaMemory" />
+            </Principal>
+            <Dependent Role="tb_Product">
+              <PropertyRef Name="MaMemory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_Order_tb_PhuongThucThanhToan">
+          <End Role="tb_PhuongThucThanhToan" Type="Self.tb_PhuongThucThanhToan" Multiplicity="0..1" />
+          <End Role="tb_Order" Type="Self.tb_Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_PhuongThucThanhToan">
+              <PropertyRef Name="MaPhuongThucThanhToan" />
+            </Principal>
+            <Dependent Role="tb_Order">
+              <PropertyRef Name="MaPhuongThucThanhToan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_TichDiem_tb_Order">
+          <End Role="tb_Order" Type="Self.tb_Order" Multiplicity="1" />
+          <End Role="tb_TichDiem" Type="Self.tb_TichDiem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Order">
+              <PropertyRef Name="MaDonHang" />
+            </Principal>
+            <Dependent Role="tb_TichDiem">
+              <PropertyRef Name="MaDonHang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_Traveler_tb_PhuongThucThanhToan">
+          <End Role="tb_PhuongThucThanhToan" Type="Self.tb_PhuongThucThanhToan" Multiplicity="0..1" />
+          <End Role="tb_Traveler" Type="Self.tb_Traveler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_PhuongThucThanhToan">
+              <PropertyRef Name="MaPhuongThucThanhToan" />
+            </Principal>
+            <Dependent Role="tb_Traveler">
+              <PropertyRef Name="MaPhuongThucThanhToan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_Product_tb_ProductCategory">
+          <End Role="tb_ProductCategory" Type="Self.tb_ProductCategory" Multiplicity="0..1" />
+          <End Role="tb_Product" Type="Self.tb_Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_ProductCategory">
+              <PropertyRef Name="MaProductCategory" />
+            </Principal>
+            <Dependent Role="tb_Product">
+              <PropertyRef Name="MaProductCategory" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tb_ProductImages_tb_Product">
+          <End Role="tb_Product" Type="Self.tb_Product" Multiplicity="0..1" />
+          <End Role="tb_ProductImages" Type="Self.tb_ProductImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tb_Product">
+              <PropertyRef Name="MaSanPham" />
+            </Principal>
+            <Dependent Role="tb_ProductImages">
+              <PropertyRef Name="MaSanPham" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBQuanLyBanDoCongNgheEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tb_Brand" EntityType="Self.tb_Brand" />
+          <EntitySet Name="tb_Category" EntityType="Self.tb_Category" />
+          <EntitySet Name="tb_ChiTietOrder" EntityType="Self.tb_ChiTietOrder" />
+          <EntitySet Name="tb_ChiTietOrder_Traveler" EntityType="Self.tb_ChiTietOrder_Traveler" />
+          <EntitySet Name="tb_Color" EntityType="Self.tb_Color" />
+          <EntitySet Name="tb_Customer" EntityType="Self.tb_Customer" />
+          <EntitySet Name="tb_DiscountCode" EntityType="Self.tb_DiscountCode" />
+          <EntitySet Name="tb_Memory" EntityType="Self.tb_Memory" />
+          <EntitySet Name="tb_Order" EntityType="Self.tb_Order" />
+          <EntitySet Name="tb_PhuongThucThanhToan" EntityType="Self.tb_PhuongThucThanhToan" />
+          <EntitySet Name="tb_Product" EntityType="Self.tb_Product" />
+          <EntitySet Name="tb_ProductCategory" EntityType="Self.tb_ProductCategory" />
+          <EntitySet Name="tb_ProductImages" EntityType="Self.tb_ProductImages" />
+          <EntitySet Name="tb_Slide" EntityType="Self.tb_Slide" />
+          <EntitySet Name="tb_TaiKhoanNganHang" EntityType="Self.tb_TaiKhoanNganHang" />
+          <EntitySet Name="tb_TichDiem" EntityType="Self.tb_TichDiem" />
+          <EntitySet Name="tb_Traveler" EntityType="Self.tb_Traveler" />
+          <AssociationSet Name="FK_tb_Product_tb_Brand" Association="Self.FK_tb_Product_tb_Brand">
+            <End Role="tb_Brand" EntitySet="tb_Brand" />
+            <End Role="tb_Product" EntitySet="tb_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_ChiTietOrder_tb_Order" Association="Self.FK_tb_ChiTietOrder_tb_Order">
+            <End Role="tb_Order" EntitySet="tb_Order" />
+            <End Role="tb_ChiTietOrder" EntitySet="tb_ChiTietOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_ChiTietOrder_tb_Product" Association="Self.FK_tb_ChiTietOrder_tb_Product">
+            <End Role="tb_Product" EntitySet="tb_Product" />
+            <End Role="tb_ChiTietOrder" EntitySet="tb_ChiTietOrder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_ChiTietOrder_Traveler_tb_Product" Association="Self.FK_tb_ChiTietOrder_Traveler_tb_Product">
+            <End Role="tb_Product" EntitySet="tb_Product" />
+            <End Role="tb_ChiTietOrder_Traveler" EntitySet="tb_ChiTietOrder_Traveler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_ChiTietOrder_Traveler_tb_Traveler" Association="Self.FK_tb_ChiTietOrder_Traveler_tb_Traveler">
+            <End Role="tb_Traveler" EntitySet="tb_Traveler" />
+            <End Role="tb_ChiTietOrder_Traveler" EntitySet="tb_ChiTietOrder_Traveler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_Product_tb_Color1" Association="Self.FK_tb_Product_tb_Color1">
+            <End Role="tb_Color" EntitySet="tb_Color" />
+            <End Role="tb_Product" EntitySet="tb_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_Order_tb_Customer" Association="Self.FK_tb_Order_tb_Customer">
+            <End Role="tb_Customer" EntitySet="tb_Customer" />
+            <End Role="tb_Order" EntitySet="tb_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_TichDiem_tb_Customer" Association="Self.FK_tb_TichDiem_tb_Customer">
+            <End Role="tb_Customer" EntitySet="tb_Customer" />
+            <End Role="tb_TichDiem" EntitySet="tb_TichDiem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_Order_tb_DiscountCode" Association="Self.FK_tb_Order_tb_DiscountCode">
+            <End Role="tb_DiscountCode" EntitySet="tb_DiscountCode" />
+            <End Role="tb_Order" EntitySet="tb_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_Product_tb_Memory" Association="Self.FK_tb_Product_tb_Memory">
+            <End Role="tb_Memory" EntitySet="tb_Memory" />
+            <End Role="tb_Product" EntitySet="tb_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_Order_tb_PhuongThucThanhToan" Association="Self.FK_tb_Order_tb_PhuongThucThanhToan">
+            <End Role="tb_PhuongThucThanhToan" EntitySet="tb_PhuongThucThanhToan" />
+            <End Role="tb_Order" EntitySet="tb_Order" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_TichDiem_tb_Order" Association="Self.FK_tb_TichDiem_tb_Order">
+            <End Role="tb_Order" EntitySet="tb_Order" />
+            <End Role="tb_TichDiem" EntitySet="tb_TichDiem" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_Traveler_tb_PhuongThucThanhToan" Association="Self.FK_tb_Traveler_tb_PhuongThucThanhToan">
+            <End Role="tb_PhuongThucThanhToan" EntitySet="tb_PhuongThucThanhToan" />
+            <End Role="tb_Traveler" EntitySet="tb_Traveler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_Product_tb_ProductCategory" Association="Self.FK_tb_Product_tb_ProductCategory">
+            <End Role="tb_ProductCategory" EntitySet="tb_ProductCategory" />
+            <End Role="tb_Product" EntitySet="tb_Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tb_ProductImages_tb_Product" Association="Self.FK_tb_ProductImages_tb_Product">
+            <End Role="tb_Product" EntitySet="tb_Product" />
+            <End Role="tb_ProductImages" EntitySet="tb_ProductImages" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBQuanLyBanDoCongNgheModelStoreContainer" CdmEntityContainer="DBQuanLyBanDoCongNgheEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DBQuanLyBanDoCongNgheModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Brand">
+            <EntityTypeMapping TypeName="DBQuanLyBanDoCongNgheModel.tb_Brand">
+              <MappingFragment StoreEntitySet="tb_Brand">
+                <ScalarProperty Name="MaBrand" ColumnName="MaBrand" />
+                <ScalarProperty Name="TenBrand" ColumnName="TenBrand" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Category">
+            <EntityTypeMapping TypeName="DBQuanLyBanDoCongNgheModel.tb_Category">
+              <MappingFragment StoreEntitySet="tb_Category">
+                <ScalarProperty Name="MaDanhMuc" ColumnName="MaDanhMuc" />
+                <ScalarProperty Name="TenDanhMuc" ColumnName="TenDanhMuc" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_ChiTietOrder">
+            <EntityTypeMapping TypeName="DBQuanLyBanDoCongNgheModel.tb_ChiTietOrder">
+              <MappingFragment StoreEntitySet="tb_ChiTietOrder">
+                <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
+                <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_ChiTietOrder_Traveler">
+            <EntityTypeMapping TypeName="DBQuanLyBanDoCongNgheModel.tb_ChiTietOrder_Traveler">
+              <MappingFragment StoreEntitySet="tb_ChiTietOrder-Traveler">
+                <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
+                <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Color">
+            <EntityTypeMapping TypeName="DBQuanLyBanDoCongNgheModel.tb_Color">
+              <MappingFragment StoreEntitySet="tb_Color">
+                <ScalarProperty Name="MaColor" ColumnName="MaColor" />
+                <ScalarProperty Name="TenColor" ColumnName="TenColor" />
+                <ScalarProperty Name="ImageColor" ColumnName="ImageColor" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Customer">
+            <EntityTypeMapping TypeName="DBQuanLyBanDoCongNgheModel.tb_Customer">
+              <MappingFragment StoreEntitySet="tb_Customer">
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ImageUser" ColumnName="ImageUser" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_DiscountCode">
+            <EntityTypeMapping TypeName="DBQuanLyBanDoCongNgheModel.tb_DiscountCode">
+              <MappingFragment StoreEntitySet="tb_DiscountCode">
+                <ScalarProperty Name="MaDiscount" ColumnName="MaDiscount" />
+                <ScalarProperty Name="TenDiscount" ColumnName="TenDiscount" />
+                <ScalarProperty Name="DiscountCode" ColumnName="DiscountCode" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Memory">
+            <EntityTypeMapping TypeName="DBQuanLyBanDoCongNgheModel.tb_Memory">
+              <MappingFragment StoreEntitySet="tb_Memory">
+                <ScalarProperty Name="MaMemory" ColumnName="MaMemory" />
+                <ScalarProperty Name="TenMemory" ColumnName="TenMemory" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Order">
+            <EntityTypeMapping TypeName="DBQuanLyBanDoCongNgheModel.tb_Order">
+              <MappingFragment StoreEntitySet="tb_Order">
+                <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="MaPhuongThucThanhToan" ColumnName="MaPhuongThucThanhToan" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="IsThanhToan" ColumnName="IsThanhToan" />
+                <ScalarProperty Name="IsHoanThanh" ColumnName="IsHoanThanh" />
+                <ScalarProperty Name="IsHuyDon" ColumnName="IsHuyDon" />
+                <ScalarProperty Name="TotalPayment" ColumnName="TotalPayment" />
+                <ScalarProperty Name="MaDiscount" ColumnName="MaDiscount" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_PhuongThucThanhToan">
+            <EntityTypeMapping TypeName="DBQuanLyBanDoCongNgheModel.tb_PhuongThucThanhToan">
+              <MappingFragment StoreEntitySet="tb_PhuongThucThanhToan">
+                <ScalarProperty Name="MaPhuongThucThanhToan" ColumnName="MaPhuongThucThanhToan" />
+                <ScalarProperty Name="TenPhuongThucThanhToan" ColumnName="TenPhuongThucThanhToan" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Product">
+            <EntityTypeMapping TypeName="DBQuanLyBanDoCongNgheModel.tb_Product">
+              <MappingFragment StoreEntitySet="tb_Product">
+                <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
+                <ScalarProperty Name="TenSanPham" ColumnName="TenSanPham" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="PriceSale" ColumnName="PriceSale" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ImageProduct" ColumnName="ImageProduct" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsSoldOut" ColumnName="IsSoldOut" />
+                <ScalarProperty Name="IsSale" ColumnName="IsSale" />
+                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+                <ScalarProperty Name="IsHot" ColumnName="IsHot" />
+                <ScalarProperty Name="SeoTitle" ColumnName="SeoTitle" />
+                <ScalarProperty Name="SeoDescription" ColumnName="SeoDescription" />
+                <ScalarProperty Name="SeoKeywords" ColumnName="SeoKeywords" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="MaProductCategory" ColumnName="MaProductCategory" />
+                <ScalarProperty Name="MaBrand" ColumnName="MaBrand" />
+                <ScalarProperty Name="MaColor" ColumnName="MaColor" />
+                <ScalarProperty Name="MaMemory" ColumnName="MaMemory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_ProductCategory">
+            <EntityTypeMapping TypeName="DBQuanLyBanDoCongNgheModel.tb_ProductCategory">
+              <MappingFragment StoreEntitySet="tb_ProductCategory">
+                <ScalarProperty Name="MaProductCategory" ColumnName="MaProductCategory" />
+                <ScalarProperty Name="TenDanhMuc" ColumnName="TenDanhMuc" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_ProductImages">
+            <EntityTypeMapping TypeName="DBQuanLyBanDoCongNgheModel.tb_ProductImages">
+              <MappingFragment StoreEntitySet="tb_ProductImages">
+                <ScalarProperty Name="MaImages" ColumnName="MaImages" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="MaSanPham" ColumnName="MaSanPham" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Slide">
+            <EntityTypeMapping TypeName="DBQuanLyBanDoCongNgheModel.tb_Slide">
+              <MappingFragment StoreEntitySet="tb_Slide">
+                <ScalarProperty Name="MaImages" ColumnName="MaImages" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_TaiKhoanNganHang">
+            <EntityTypeMapping TypeName="DBQuanLyBanDoCongNgheModel.tb_TaiKhoanNganHang">
+              <MappingFragment StoreEntitySet="tb_TaiKhoanNganHang">
+                <ScalarProperty Name="MaSoTaiKhoan" ColumnName="MaSoTaiKhoan" />
+                <ScalarProperty Name="TenNganHang" ColumnName="TenNganHang" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="SoTaiKhoan" ColumnName="SoTaiKhoan" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_TichDiem">
+            <EntityTypeMapping TypeName="DBQuanLyBanDoCongNgheModel.tb_TichDiem">
+              <MappingFragment StoreEntitySet="tb_TichDiem">
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="SoDiemCongGanNhat" ColumnName="SoDiemCongGanNhat" />
+                <ScalarProperty Name="TongSoDiem" ColumnName="TongSoDiem" />
+                <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tb_Traveler">
+            <EntityTypeMapping TypeName="DBQuanLyBanDoCongNgheModel.tb_Traveler">
+              <MappingFragment StoreEntitySet="tb_Traveler">
+                <ScalarProperty Name="TotalPayment" ColumnName="TotalPayment" />
+                <ScalarProperty Name="MaDonHang" ColumnName="MaDonHang" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNumber1" ColumnName="PhoneNumber1" />
+                <ScalarProperty Name="PhoneNumber2" ColumnName="PhoneNumber2" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Ghichu" ColumnName="Ghichu" />
+                <ScalarProperty Name="MaPhuongThucThanhToan" ColumnName="MaPhuongThucThanhToan" />
+                <ScalarProperty Name="IsThanhToan" ColumnName="IsThanhToan" />
+                <ScalarProperty Name="IsHoanThanh" ColumnName="IsHoanThanh" />
+                <ScalarProperty Name="IsHuyDon" ColumnName="IsHuyDon" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
